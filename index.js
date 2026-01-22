@@ -37,7 +37,6 @@ const flashSize = document.getElementById("flashSize");
 const lblFlashMode = document.getElementById("lblFlashMode");
 const lblFlashFreq = document.getElementById("lblFlashFreq");
 const lblFlashSize = document.getElementById("lblFlashSize");
-const debugLogging = document.getElementById("debugLogging");
 // This is a frontend example of Esptool-JS using local bundle file
 // To optimize use a CDN hosted version like
 // https://unpkg.com/esptool-js@0.5.0/bundle.js
@@ -172,7 +171,6 @@ connectButton.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
             transport,
             baudrate: parseInt(baudrates.value),
             terminal: espLoaderTerminal,
-            debugLogging: debugLogging.checked,
         };
         esploader = new ESPLoader(flashOptions);
         traceButton.style.display = "initial";
