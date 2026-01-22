@@ -40,7 +40,14 @@ const lblFlashSize = document.getElementById("lblFlashSize");
 // This is a frontend example of Esptool-JS using local bundle file
 // To optimize use a CDN hosted version like
 // https://unpkg.com/esptool-js@0.5.0/bundle.js
-import { ESPLoader, Transport, } from "./bundle.js";
+import {
+   ESPLoader,
+   FlashOptions,
+   FlashModeValues,
+   FlashFreqValues,
+   FlashSizeValues,
+   LoaderOptions,
+   Transport } from "./bundle.js";
 import { serial } from "./web-serial-polyfill.js";
 const serialLib = !navigator.serial && navigator.usb ? serial : navigator.serial;
 const term = new Terminal({ cols: 120, rows: 40 });
@@ -105,7 +112,7 @@ function populateFlashDropdowns() {
         return;
     }
     // Populate Flash Frequency dropdown
-   flashFreq.innerHTML = '<option value="Не изменять">Не изменять</option>';
+    flashFreq.innerHTML = '<option value="keep">Не изменять</option>';
     const flashFreqKeys = Object.keys(esploader.chip.FLASH_FREQUENCY).sort((a, b) => {
         const freqOrder = ["80m", "60m", "48m", "40m", "30m", "26m", "24m", "20m", "16m", "15m", "12m"];
         const indexA = freqOrder.indexOf(a);
@@ -126,7 +133,7 @@ function populateFlashDropdowns() {
     });
     flashFreq.options[0].selected = true;
     // Populate Flash Size dropdown
-   flashSize.innerHTML = '<option value="Определить">Определить</option><option value="Не изменять">Не изменять</option>';
+    flashSize.innerHTML = '<option value="detect">Определить</option><option value="keep">Не изменять</option>';
     const flashSizeKeys = Object.keys(esploader.chip.FLASH_SIZES).sort((a, b) => {
         const sizeOrder = [
             "256KB",
