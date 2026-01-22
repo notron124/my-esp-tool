@@ -41,13 +41,11 @@ const lblFlashSize = document.getElementById("lblFlashSize");
 // To optimize use a CDN hosted version like
 // https://unpkg.com/esptool-js@0.5.0/bundle.js
 import {
-   ESPLoader,
-   FlashOptions,
+   ESPLoader, FlashOptions,
    FlashModeValues,
    FlashFreqValues,
    FlashSizeValues,
-   LoaderOptions,
-   Transport } from "../../../lib";
+   LoaderOptions, Transport, } from "./lib";
 import { serial } from "./web-serial-polyfill.js";
 const serialLib = !navigator.serial && navigator.usb ? serial : navigator.serial;
 const term = new Terminal({ cols: 120, rows: 40 });
