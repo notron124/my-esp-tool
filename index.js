@@ -45,7 +45,7 @@ import {
    FlashModeValues,
    FlashFreqValues,
    FlashSizeValues,
-   LoaderOptions, Transport, } from "lib";
+   LoaderOptions, Transport, } from "/lib";
 import { serial } from "./web-serial-polyfill.js";
 const serialLib = !navigator.serial && navigator.usb ? serial : navigator.serial;
 const term = new Terminal({ cols: 120, rows: 40 });
